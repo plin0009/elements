@@ -8,11 +8,10 @@ body {
 }
 #header {
   display: flex;
-  background-color: #00F;
+  background-color: #FF0;
 }
 #output {
   background: #F00;
-  display: block;
 }
 input {
   font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
@@ -25,12 +24,10 @@ input {
 .left {
   flex: 1 0 auto;
   align-self: center;
-  background-color: #FF0;
 }
 .right {
   flex: 0 1 auto;
   align-self: center;
-  background-color: #0FF;
 }
 
 .element {
@@ -38,4 +35,29 @@ input {
   background-color: #F0F;
   width: 100px;
   height: 120px;
+  position: relative;
+}
+.element p {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+p.number {
+  font-size: 12px;
+  top: 5%;
+  width: 20%;
+}
+p.symbol {
+  font-size: 40px;
+  font-weight: bold;
+  top: 20%;
+}
+p.name {
+  font-size: 18px;
+  bottom: 20%;
+}
+p.weight {
+  font-size: 12px;
+  bottom: 5%;
 }
