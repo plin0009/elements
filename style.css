@@ -1,0 +1,41 @@
+body {
+  font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
+}
+#container {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+}
+#header {
+  display: flex;
+  background-color: #00F;
+}
+#output {
+  background: #F00;
+  display: block;
+}
+input {
+  font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
+  font-size: 0.9rem;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.left {
+  flex: 1 0 auto;
+  align-self: center;
+  background-color: #FF0;
+}
+.right {
+  flex: 0 1 auto;
+  align-self: center;
+  background-color: #0FF;
+}
+
+.element {
+  margin: 5px 5px;
+  background-color: #F0F;
+  width: 100px;
+  height: 120px;
+}
