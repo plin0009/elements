@@ -3,6 +3,7 @@ body {
 }
 #container {
   margin: 0 auto;
+  text-align: center;
 }
 #header {
   position: relative;
@@ -11,13 +12,16 @@ body {
   display: flex;
 }
 #output {
-  position: relative;
   margin: 0 auto;
-  display: flex;
+  display: inline-block;
+  width: 90%;
 }
 input {
   font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
   font-size: 0.9rem;
+}
+input[type="text"] {
+  width: 50%;
 }
 .title {
   font-size: 2rem;
@@ -31,14 +35,17 @@ input {
   flex: 0 1 auto;
   align-self: center;
 }
-.element, .space {
+.element {
   margin: 5px;
   width: 100px;
   height: 120px;
   position: relative;
+  float: left;
 }
 .space {
-  width: 10px;
+  width: 100%;
+  position: relative;
+  float: left;
 }
 .alkali {
   background-color: #7099c4;
