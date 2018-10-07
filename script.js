@@ -10,10 +10,10 @@ class Word {
     this.possibilities = new Array();
   }
   beginSearch() {
-    this.search([], this.string, 1, 0);
-    this.search([], this.string, 2, 0);
+    this.search([], this.string, 2);
+    this.search([], this.string, 1);
   }
-  search(elements, left, characters, iteration) {
+  search(elements, left, characters) {
     if (left.length < characters) return;
     let symbol = left.substr(0, characters);
     left = left.substr(characters);
@@ -24,8 +24,8 @@ class Word {
           this.possibilities.push(elements);
           return;
         }
-        this.search(elements.slice(0), left, 1, iteration + 1);
-        this.search(elements.slice(0), left, 2, iteration + 1);
+        this.search(elements.slice(0), left, 2);
+        this.search(elements.slice(0), left, 1);
         break;
       }
     }
@@ -110,8 +110,7 @@ window.onload = function() {
 function findElements(phrase) {
   words = phrase.match(RE);
   for (var i = 0; i < words.length; i++) {
-    makeElement(words[i]);
-    if (i < words.length - 1) {
+    if (makeElement(words[i]) && i < words.length - 1) {
       let space = document.createElement("div");
       space.className = "space";
       output.appendChild(space);
@@ -126,5 +125,7 @@ function makeElement(name) {
     for (const element of word.possibilities[0]) {
       output.appendChild(element.child());
     }
+    return true;
   }
+  return false;
 }
