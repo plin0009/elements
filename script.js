@@ -81,19 +81,19 @@ class Element {
       this.type = "metalloid";
     }
     else if ([1, 6, 7, 8, 9, 15, 16, 17, 34, 35, 53].includes(this.number)) {
-      this.type = "other_nonmetal";
+      this.type = "reactive_nonmetal";
     }
     else if ([2, 10, 18, 36, 54, 86].includes(this.number)) {
       this.type = "noble_gas";
     }
     else if (57 <= this.number && this.number <= 71) {
-      this.type = "lanthanoid";
+      this.type = "lanthanide";
     }
     else if (89 <= this.number && this.number <= 103) {
-      this.type = "actinoid";
+      this.type = "actinide";
     }
     else if ([109, 110, 111, 113, 115, 116, 117, 118].includes(this.number)) {
-      this.type = "undefined";
+      this.type = "unknown";
     }
     else if ([13, 31, 49, 50, 81, 82, 83, 84, 114].includes(this.number)) {
       this.type = "post-transition";

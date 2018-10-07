@@ -1,20 +1,43 @@
 body {
   font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
 }
+hr {
+  border: none;
+  background-color: #eee;
+  height: 1px;
+}
 #container {
   margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  display:inline-block;
 }
 #header {
   position: relative;
   margin: 0 auto;
-  width: 400px;
+  width: 350px;
   display: flex;
+  text-align: center;
+}
+#body {
+  margin: 32px auto;
+  display: flex;
+  width: 90%;
+  position: relative;
+  flex-direction: column;
 }
 #output {
-  margin: 0 auto;
   display: inline-block;
-  width: 90%;
+}
+#legend {
+  text-align: left;
+  display: inline-block;
+  margin: 32px auto;
+  line-height: 0;
+}
+#legend p {
+  font-size: 0.78rem;
+  display: inline;
+  padding-left: 7px;
 }
 input {
   font-family: "Arial Nova", Arial,  Helvetica, sans-serif;
@@ -47,6 +70,11 @@ input[type="text"] {
   position: relative;
   float: left;
 }
+.square {
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+}
 .fake {
   background-color: #000;
 }
@@ -56,35 +84,37 @@ input[type="text"] {
 .alkaline_earth {
   background-color: #3a5b84;
 }
+.transition {
+  background-color: #904d57;
+}
+.lanthanide {
+  background-color: #7b445c;
+}
+.actinide {
+  background-color: #613141;
+}
+.post-transition {
+  background-color: #5a2245;
+}
 .metalloid {
   background-color: #3e103d;
 }
-.other_nonmetal {
+.reactive_nonmetal {
   background-color: #1a274a;
 }
 .noble_gas {
   background-color: #190e29;
 }
-.lanthanoid {
-  background-color: #7b445c;
-}
-.actinoid {
-  background-color: #613141;
-}
-.undefined {
+.unknown {
   background-color: #342c2c;
 }
-.post-transition {
-  background-color: #5a2245;
-}
-.transition {
-  background-color: #904d57;
-}
+
 .element p {
   text-align: center;
   margin: 0;
   position: absolute;
   width: 100%;
+  color: #fff;
   color: #fffc;
 }
 p.number {
