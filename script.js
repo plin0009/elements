@@ -37,10 +37,43 @@ class Element {
     this.symbol = data.symbol;
     this.name = data.name;
     this.weight = data.weight;
+    this.determineType();
+  }
+  determineType() {
+    if ([3, 11, 19, 37, 55, 87].includes(this.number)) {
+      this.type = "alkali";
+    }
+    else if ([4, 12, 20, 38, 56, 88].includes(this.number)) {
+      this.type = "alkaline_earth";
+    }
+    else if ([5, 14, 32, 33, 51, 52, 85].includes(this.number)) {
+      this.type = "metalloid";
+    }
+    else if ([1, 6, 7, 8, 9, 15, 16, 17, 34, 35, 53].includes(this.number)) {
+      this.type = "other_nonmetal";
+    }
+    else if ([2, 10, 18, 36, 54, 86].includes(this.number)) {
+      this.type = "noble_gas";
+    }
+    else if (57 <= this.number && this.number <= 71) {
+      this.type = "lanthanoid";
+    }
+    else if (89 <= this.number && this.number <= 103) {
+      this.type = "actinoid";
+    }
+    else if ([109, 110, 111, 113, 115, 116, 117, 118].includes(this.number)) {
+      this.type = "undefined";
+    }
+    else if ([13, 31, 49, 50, 81, 82, 83, 84, 114].includes(this.number)) {
+      this.type = "post-transition";
+    }
+    else {
+      this.type = "transition";
+    }
   }
   child() {
     let block = document.createElement("div");
-    block.className = "element";
+    block.className = "element " + this.type;
     let things = ["number", "symbol", "name", "weight"];
     for (const thing of things) {
       let part = document.createElement("p");
@@ -78,6 +111,11 @@ function findElements(phrase) {
   words = phrase.match(RE);
   for (var i = 0; i < words.length; i++) {
     makeElement(words[i]);
+    if (i < words.length - 1) {
+      let space = document.createElement("div");
+      space.className = "space";
+      output.appendChild(space);
+    }
   }
 }
 
