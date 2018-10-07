@@ -30,6 +30,37 @@ class Word {
       }
     }
   }
+  hopelessSearch() {
+    let left = this.string;
+    let elements = new Array();
+    while (left) {
+      // try 2
+      let symbol = left.substr(0, 2);
+      let found = false;
+      for (const element of periodicTable) {
+        if (element.symbol.toLowerCase() == symbol) {
+          elements.push(element);
+          left = left.substr(2);
+          found = true;
+          break;
+        }
+      }
+      if (found) {
+        continue;
+      }
+      symbol = left.substr(0, 1);
+      left = left.substr(1);
+      for (const element of periodicTable) {
+        if (element.symbol.toLowerCase() == symbol) {
+          elements.push(element);
+          found = true;
+          break;
+        }
+      }
+      !found && ((elements.slice(-1)[0] && elements.slice(-1)[0].addSymbols(symbol)) || elements.push(new Placeholder(symbol)));
+    }
+    return elements;
+  }
 }
 class Element {
   constructor(data, number) {
@@ -83,6 +114,31 @@ class Element {
     }
     return block;
   }
+  addSymbols(symbol) {
+    return false;
+  }
+}
+class Placeholder {
+  constructor(symbol) {
+    this.number = 0;
+    this.symbol = symbol.toUpperCase();
+    this.weight = "0.00";
+  }
+  child() {
+    let block = document.createElement("div");
+    block.className = "element fake";
+    let things = ["number", "symbol", "weight"];
+    for (const thing of things) {
+      let part = document.createElement("p");
+      part.className = thing;
+      part.innerHTML = this[thing];
+      block.appendChild(part);
+    }
+    return block;
+  }
+  addSymbols(symbol) {
+    return this.symbol.length == 1 && (this.symbol += symbol) && true;
+  }
 }
 
 var periodicTable = new Array();
@@ -110,7 +166,8 @@ window.onload = function() {
 function findElements(phrase) {
   words = phrase.match(RE);
   for (var i = 0; i < words.length; i++) {
-    if (makeElement(words[i]) && i < words.length - 1) {
+    makeElement(words[i]);
+    if (i < words.length - 1) {
       let space = document.createElement("div");
       space.className = "space";
       output.appendChild(space);
@@ -121,11 +178,8 @@ function findElements(phrase) {
 function makeElement(name) {
   var word = new Word(name.toLowerCase());
   word.beginSearch();
-  if (word.possibilities.length) {
-    for (const element of word.possibilities[0]) {
-      output.appendChild(element.child());
-    }
-    return true;
+  let draw = word.possibilities.length && word.possibilities[0] || word.hopelessSearch();
+  for (const element of draw) {
+    output.appendChild(element.child());
   }
-  return false;
 }

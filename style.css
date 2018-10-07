@@ -47,6 +47,9 @@ input[type="text"] {
   position: relative;
   float: left;
 }
+.fake {
+  background-color: #000;
+}
 .alkali {
   background-color: #7099c4;
 }
