@@ -80,7 +80,8 @@ input {
 p.number {
   font-size: 12px;
   top: 5%;
-  width: 25%;
+  left: 7%;
+  text-align: left;
 }
 p.symbol {
   font-size: 40px;
@@ -88,7 +89,7 @@ p.symbol {
   top: 20%;
 }
 p.name {
-  font-size: 18px;
+  font-size: 14px;
   bottom: 20%;
 }
 p.weight {
